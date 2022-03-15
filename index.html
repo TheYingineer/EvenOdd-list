@@ -21,8 +21,9 @@
       
       <div> 
             <label for="word">word</label> 
-            
+
             <input type="text" name="word" id="word"  placeholder="what's your word?" onkeyup="updateWord(this)"> 
+            <!-- onkeyup -- A function is triggered when the user releases a key in the input field -->
       </div>
 
       <div>
@@ -45,31 +46,34 @@
 
   <script>
     
-        let usersWord = ""     
-        let oddList = document.getElementById("ood")
-        let evenList = document.getElementById("even")
+        let usersWord = ""  //create storage   
+        let oddList = document.getElementById("odd") //call out id from list
+        let evenList = document.getElementById("even") //call out id from list
 
 
         function updateWord(element) { //updateWord was from the onkeyup from the userinput box
-          usersWord = element.value
+          usersWord = element.value 
           console.log(usersWord) 
         }
 
 
+// when click on sumbit
+        function handleSubmit() { 
 
-        function handleSubmit() { // when you click on the submit button
           let newListItem = document.createElement('LI') 
-          newListItem.innerText = usersWord
-          if (usersWord.length = 0 ) 
+          
+          newListItem.innerText = usersWord  //the next timer user type, goes int next bullet
+          
+          if (usersWord.length <= 0 ) //can't be just =0 b/c I want it to click on the space and it display a message.
               {
                 console.error("user need to enter word") 
                 window.alert("user needs to enter word") 
                 return
               }
               
-            if(usersWord.length%2 === 0) 
+            if(usersWord.length % 2 === 0) 
               {
-                 evenList.appendChild(newListItem)
+                 evenList.appendChild(newListItem) //appendChild Basically tells it to go to the next line
               }
               
               else { 
@@ -77,8 +81,8 @@
                     }
 
               console.log(evenList)
-              usersWord = ""
-              document.getElementById("word").value =""
+              console.log(oddList)
+              document.getElementById("word").value =""  //Clear out the space user already enter and reset it back to original state
 
           } 
 
